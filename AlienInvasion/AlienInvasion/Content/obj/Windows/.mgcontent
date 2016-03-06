@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/arrow.png</File>
+    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/earth.png</File>
+    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/PlayerSpriteShip_4x4_001.png</File>
+    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/PlayerSpriteShipBlinkingLamp.png</File>
+    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/EnemySpriteShipClear.png</File>
+    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/shuttle.png</File>
+    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/stars.jpg</File>
+    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/MainFont.spritefont</File>
+    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/explosion.png</File>
+    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/emptySprite.png</File>
+    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/explosion2.png</File>
+    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/bullet01_1f_8p.png</File>
+  </SourceFiles>
+</SourceFileCollection>
