@@ -23,7 +23,7 @@ namespace AlienInvasion
         public cButton(Texture2D newTexture, GraphicsDevice graphics)
         {
             this.texture = newTexture;
-            this.size = new Vector2(graphics.Viewport.Width / 8, graphics.Viewport.Height / 30);
+            this.size = new Vector2(graphics.Viewport.Width / 8, graphics.Viewport.Height / 12);
         }
 
         bool down;

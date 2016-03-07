@@ -5,7 +5,9 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/MainMenu.jpg</File>
-    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/Button.jpg</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/Button_easy.png</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/Button_medium.png</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/Button_hard.png</File>
     <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/arrow.png</File>
     <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/earth.png</File>
     <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/PlayerSpriteShip_4x4_001.png</File>
