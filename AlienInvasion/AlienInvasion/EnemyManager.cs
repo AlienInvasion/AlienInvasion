@@ -33,6 +33,11 @@ namespace AlienInvasion
             WindowClientBoundsHeight = windowClientBoundsHeight;
         }
 
+        public void Update(IList<EnemySpaceShip> enemySpaceShips)
+        {
+            ReturnEnemySpaceShipInFieldIfGoOutOfBorders(enemySpaceShips);
+            RandomizeEnemySpaceShips(enemySpaceShips);
+        }
 
         internal void ReturnEnemySpaceShipInFieldIfGoOutOfBorders(IList<EnemySpaceShip> enemySpaceShips)
         {
