@@ -45,7 +45,7 @@ namespace AlienInvasion
             {
                 if (enemyShip.Y > WindowClientBoundsHeight + 50)
                 {
-                    enemyShip.Y = randomNumber.Next(-200, -65);
+                    enemyShip.Y = randomNumber.Next(-200, -75);
                     enemyShip.X = randomNumber.Next(75, WindowClientBoundsRight - 75);
                 }
             }
@@ -55,7 +55,7 @@ namespace AlienInvasion
         {
             foreach (var enemyShip in enemySpaceShips)
             {
-                if (enemyShip.Y >= -50 && enemyShip.Y <= -48)
+                if (enemyShip.Y >= -70 && enemyShip.Y <= -68)
                 {
                     //enemyShip.Y = randomNumber.Next(-200, -65);
                     enemyShip.X = randomNumber.Next(55, WindowClientBoundsRight - 55);
