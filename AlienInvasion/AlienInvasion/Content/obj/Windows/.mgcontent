@@ -4,17 +4,19 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/arrow.png</File>
-    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/earth.png</File>
-    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/PlayerSpriteShip_4x4_001.png</File>
-    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/PlayerSpriteShipBlinkingLamp.png</File>
-    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/EnemySpriteShipClear.png</File>
-    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/shuttle.png</File>
-    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/stars.jpg</File>
-    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/MainFont.spritefont</File>
-    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/explosion.png</File>
-    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/emptySprite.png</File>
-    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/explosion2.png</File>
-    <File>E:/d speed data/IntroCSharp/Advanced CSharp/TeamWorkGame/practice/AlienInvasion/AlienInvasion/Content/bullet01_1f_8p.png</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/MainMenu.jpg</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/Button.jpg</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/arrow.png</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/earth.png</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/PlayerSpriteShip_4x4_001.png</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/PlayerSpriteShipBlinkingLamp.png</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/EnemySpriteShipClear.png</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/shuttle.png</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/stars.jpg</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/MainFont.spritefont</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/explosion.png</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/emptySprite.png</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/explosion2.png</File>
+    <File>C:/Users/Pavleta/Desktop/game_simeon/AlienInvasion/AlienInvasion/AlienInvasion/Content/bullet01_1f_8p.png</File>
   </SourceFiles>
 </SourceFileCollection>

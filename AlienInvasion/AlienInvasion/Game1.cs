@@ -15,6 +15,20 @@ namespace AlienInvasion
         SpriteBatch spriteBatch;
         EnemyManager enemyManager;
 
+        // menu
+        enum GameState
+        {
+            MainMenu,
+            Winners,
+            Playing
+        }
+        GameState CurrentGameState = GameState.MainMenu;
+
+        private int screenWidth = 800;
+        private int screenHeight = 480;
+
+        private cButton btnPlay;
+
         private Texture2D background;
         //private Texture2D shuttle;
         private Texture2D earth;
@@ -74,6 +88,14 @@ namespace AlienInvasion
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            // menu
+            graphics.PreferredBackBufferWidth = this.screenWidth;
+            graphics.PreferredBackBufferHeight = this.screenHeight;
+            graphics.ApplyChanges();
+            IsMouseVisible = true;
+            btnPlay = new cButton(Content.Load<Texture2D>("Button"), this.graphics.GraphicsDevice);
+            btnPlay.setPosition(new Vector2(350, 300));
+
             // TODO: use this.Content to load your game content here
             enemyManager = new EnemyManager(Window.ClientBounds.Right, Window.ClientBounds.Height);
             background = Content.Load<Texture2D>("stars");
@@ -122,116 +144,136 @@ namespace AlienInvasion
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
+
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            // menu
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            //    Exit();
 
-            // TODO: Add your update logic here
-            //angle += 0.01f;
+            MouseState mouse = Mouse.GetState();
 
-            //PlayerSpaceShip controls management
-            playerSpaceShip.Update();
-            playerSpaceShip.Controls();
-            enemyManager.ReturnEnemySpaceShipInFieldIfGoOutOfBorders(enemySpaceShips);
-            enemyManager.RandomizeEnemySpaceShips(enemySpaceShips);
-
-            foreach (var enemyShip in enemySpaceShips)
+            switch (CurrentGameState)
             {
-                enemyShip.Update();
-            }
-            //enemySpaceShip1.Update();
-            //enemySpaceShip2.Update();
-
-            //collision between player ship and enemy1 ship
-            foreach (var enemyShip in enemySpaceShips)
-            {
-                if (CollideShips(playerSpaceShip, enemyShip))
-                {
-                    playerSpaceShip.Texture = Content.Load<Texture2D>("explosion");
-                    playerSpaceShip.IsDestroyed = true;
-                    //enemyShip.Texture = Content.Load<Texture2D>("explosion2");
-                    enemyShip.Texture = Content.Load<Texture2D>("explosion");
-                    enemyShip.IsDestroyed = true;
-                    score++;
-                }
-
-            }
-
-
-            //  if (CollideShips(playerSpaceShip, enemySpaceShip1))
-            //  {
-            //      playerSpaceShip.Texture = Content.Load<Texture2D>("explosion");
-            //      playerSpaceShip.IsDestroyed = true;
-            //      enemySpaceShip1.Texture = Content.Load<Texture2D>("explosion2");
-            //      enemySpaceShip1.IsDestroyed = true;
-            //      score++;
-            //  }
-            //
-            //  //collision between player ship and enemy2 ship
-            //  if (CollideShips(playerSpaceShip, enemySpaceShip2))
-            //  {
-            //      playerSpaceShip.Texture = Content.Load<Texture2D>("explosion");
-            //      playerSpaceShip.IsDestroyed = true;
-            //      enemySpaceShip2.Texture = Content.Load<Texture2D>("explosion2");
-            //      enemySpaceShip2.IsDestroyed = true;
-            //      score++;
-            //  }
-
-            if (playerSpaceShip.IsDestroyed == true && playerSpaceShip.CurrentFrame > 14)
-            {
-                playerSpaceShip.Texture = Content.Load<Texture2D>("emptySprite");
-            }
-
-            // Bullets shooting
-            if (Keyboard.GetState().IsKeyDown(Keys.Space) && pastKey.IsKeyUp(Keys.Space))
-            {
-                Shoot();
-            }
-            pastKey = Keyboard.GetState();
-
-            UpdateBullets();
-
-            // Bullets collide
-            foreach (var enemyShip in enemySpaceShips)
-            {
-                foreach (var bullet in bullets)
-                {
-                    if (CollideBullets(bullet, enemyShip))
+                case GameState.MainMenu:
+                    if (btnPlay.isClicked == true)
                     {
-                        //enemyShip.Texture = Content.Load<Texture2D>("explosion2");
-                        enemyShip.CurrentFrame = randomNumber.Next(1, 4);
-                        enemyShip.Texture = Content.Load<Texture2D>("explosion");
-                        enemyShip.IsDestroyed = true;
-                        enemyShip.Y = -101;
-                        bullet.Posituon += new Vector2(1000, -500);
-                        score++;
+                        this.CurrentGameState = GameState.Playing;
                     }
-                }
+                    this.btnPlay.Update(mouse);
+                    break;
+                case GameState.Winners:
+                    break;
+                case GameState.Playing:
+
+                    // TODO: Add your update logic here
+                    //angle += 0.01f;
+
+                    //PlayerSpaceShip controls management
+                    playerSpaceShip.Update();
+                    playerSpaceShip.Controls();
+                    enemyManager.ReturnEnemySpaceShipInFieldIfGoOutOfBorders(enemySpaceShips);
+                    enemyManager.RandomizeEnemySpaceShips(enemySpaceShips);
+
+                    foreach (var enemyShip in enemySpaceShips)
+                    {
+                        enemyShip.Update();
+                    }
+                    //enemySpaceShip1.Update();
+                    //enemySpaceShip2.Update();
+
+                    //collision between player ship and enemy1 ship
+                    foreach (var enemyShip in enemySpaceShips)
+                    {
+                        if (CollideShips(playerSpaceShip, enemyShip))
+                        {
+                            playerSpaceShip.Texture = Content.Load<Texture2D>("explosion");
+                            playerSpaceShip.IsDestroyed = true;
+                            //enemyShip.Texture = Content.Load<Texture2D>("explosion2");
+                            enemyShip.Texture = Content.Load<Texture2D>("explosion");
+                            enemyShip.IsDestroyed = true;
+                            score++;
+                        }
+
+                    }
+
+
+                    //  if (CollideShips(playerSpaceShip, enemySpaceShip1))
+                    //  {
+                    //      playerSpaceShip.Texture = Content.Load<Texture2D>("explosion");
+                    //      playerSpaceShip.IsDestroyed = true;
+                    //      enemySpaceShip1.Texture = Content.Load<Texture2D>("explosion2");
+                    //      enemySpaceShip1.IsDestroyed = true;
+                    //      score++;
+                    //  }
+                    //
+                    //  //collision between player ship and enemy2 ship
+                    //  if (CollideShips(playerSpaceShip, enemySpaceShip2))
+                    //  {
+                    //      playerSpaceShip.Texture = Content.Load<Texture2D>("explosion");
+                    //      playerSpaceShip.IsDestroyed = true;
+                    //      enemySpaceShip2.Texture = Content.Load<Texture2D>("explosion2");
+                    //      enemySpaceShip2.IsDestroyed = true;
+                    //      score++;
+                    //  }
+
+                    if (playerSpaceShip.IsDestroyed == true && playerSpaceShip.CurrentFrame > 14)
+                    {
+                        playerSpaceShip.Texture = Content.Load<Texture2D>("emptySprite");
+                    }
+
+                    // Bullets shooting
+                    if (Keyboard.GetState().IsKeyDown(Keys.Space) && pastKey.IsKeyUp(Keys.Space))
+                    {
+                        Shoot();
+                    }
+                    pastKey = Keyboard.GetState();
+
+                    UpdateBullets();
+
+                    // Bullets collide
+                    foreach (var enemyShip in enemySpaceShips)
+                    {
+                        foreach (var bullet in bullets)
+                        {
+                            if (CollideBullets(bullet, enemyShip))
+                            {
+                                //enemyShip.Texture = Content.Load<Texture2D>("explosion2");
+                                enemyShip.CurrentFrame = randomNumber.Next(1, 4);
+                                enemyShip.Texture = Content.Load<Texture2D>("explosion");
+                                enemyShip.IsDestroyed = true;
+                                enemyShip.Y = -101;
+                                bullet.Posituon += new Vector2(1000, -500);
+                                score++;
+                            }
+                        }
+                    }
+
+                    //  foreach (var bullet in bullets)
+                    //  {
+                    //      if (CollideBullets(bullet, enemySpaceShip1))
+                    //      {
+                    //          enemySpaceShip1.Texture = Content.Load<Texture2D>("explosion2");
+                    //          enemySpaceShip1.IsDestroyed = true;
+                    //          score++;
+                    //      }
+                    //  }
+                    //  
+                    //  foreach (var bullet in bullets)
+                    //  {
+                    //      if (CollideBullets(bullet, enemySpaceShip2))
+                    //      {
+                    //          enemySpaceShip2.Texture = Content.Load<Texture2D>("explosion2");
+                    //          enemySpaceShip2.IsDestroyed = true;
+                    //          score++;
+                    //      }
+                    //  }
+
+
+                    base.Update(gameTime);
+                    break;
             }
 
-            //  foreach (var bullet in bullets)
-            //  {
-            //      if (CollideBullets(bullet, enemySpaceShip1))
-            //      {
-            //          enemySpaceShip1.Texture = Content.Load<Texture2D>("explosion2");
-            //          enemySpaceShip1.IsDestroyed = true;
-            //          score++;
-            //      }
-            //  }
-            //  
-            //  foreach (var bullet in bullets)
-            //  {
-            //      if (CollideBullets(bullet, enemySpaceShip2))
-            //      {
-            //          enemySpaceShip2.Texture = Content.Load<Texture2D>("explosion2");
-            //          enemySpaceShip2.IsDestroyed = true;
-            //          score++;
-            //      }
-            //  }
-
-
-            base.Update(gameTime);
         }
 
         public void UpdateBullets()
@@ -319,46 +361,63 @@ namespace AlienInvasion
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
-            spriteBatch.Begin();
-
-            spriteBatch.Draw(background, new Rectangle(0, 0, borderRight, borderDown), Color.White);
-            spriteBatch.Draw(earth, new Vector2(400, 240), Color.White);
-            //spriteBatch.Draw(shuttle, new Vector2(450, 240), Color.White);
-
-
-            spriteBatch.DrawString(font, "Score " + score, new Vector2(30, 410), Color.White);
-            spriteBatch.DrawString(font, "PlayerSpaceShip X,Y= " + playerSpaceShip.X + ", " + playerSpaceShip.Y, new Vector2(30, 430), Color.White);
-            spriteBatch.DrawString(font, "EnemySpaceShip1 X,Y= " + enemySpaceShips[0].X + ", " + enemySpaceShips[0].Y, new Vector2(30, 450), Color.White);
-            spriteBatch.DrawString(font, "EnemySpaceShip2 X,Y= " + enemySpaceShips[1].X + ", " + enemySpaceShips[1].Y, new Vector2(30, 465), Color.White);
-
-            //spriteBatch.DrawString(font, "ColisionRectForPlayer X,Y= " + co + ", " + enemySpaceShip1.Y, new Vector2(30, 465), Color.White);
-
-
-            Vector2 location = new Vector2(400, 240);
-            //Rectangle sourceRectangle = new Rectangle(0, 0, arrow.Width, arrow.Height);
-            //Vector2 origin = new Vector2(arrow.Width / 2, arrow.Height);
-            //spriteBatch.Draw(arrow, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
-
-            playerSpaceShip.Draw(spriteBatch, new Vector2(playerSpaceShip.X, playerSpaceShip.Y));
-            //PlayerSpaceShip.Draw(spriteBatch, new Vector2   (300, 200));
-
-            foreach (var enemyShip in enemySpaceShips)
+            // menu
+            this.spriteBatch.Begin();
+            switch (CurrentGameState)
             {
-                enemyShip.Draw(spriteBatch, new Vector2(enemyShip.X, enemyShip.Y));
+                case GameState.MainMenu:
+                    this.spriteBatch.Draw(Content.Load<Texture2D>("MainMenu"), new Rectangle(0, 0, this.screenWidth, this.screenHeight), Color.White);
+                    this.btnPlay.Draw(this.spriteBatch);
+                    break;
+                case GameState.Winners:
+                    break;
+                case GameState.Playing:
+                    //this.spriteBatch.End();
+
+                    // TODO: Add your drawing code here
+                    //spriteBatch.Begin();
+
+                    spriteBatch.Draw(background, new Rectangle(0, 0, borderRight, borderDown), Color.White);
+                    spriteBatch.Draw(earth, new Vector2(400, 240), Color.White);
+                    //spriteBatch.Draw(shuttle, new Vector2(450, 240), Color.White);
+
+
+                    spriteBatch.DrawString(font, "Score " + score, new Vector2(30, 410), Color.White);
+                    spriteBatch.DrawString(font, "PlayerSpaceShip X,Y= " + playerSpaceShip.X + ", " + playerSpaceShip.Y, new Vector2(30, 430), Color.White);
+                    spriteBatch.DrawString(font, "EnemySpaceShip1 X,Y= " + enemySpaceShips[0].X + ", " + enemySpaceShips[0].Y, new Vector2(30, 450), Color.White);
+                    spriteBatch.DrawString(font, "EnemySpaceShip2 X,Y= " + enemySpaceShips[1].X + ", " + enemySpaceShips[1].Y, new Vector2(30, 465), Color.White);
+
+                    //spriteBatch.DrawString(font, "ColisionRectForPlayer X,Y= " + co + ", " + enemySpaceShip1.Y, new Vector2(30, 465), Color.White);
+
+
+                    Vector2 location = new Vector2(400, 240);
+                    //Rectangle sourceRectangle = new Rectangle(0, 0, arrow.Width, arrow.Height);
+                    //Vector2 origin = new Vector2(arrow.Width / 2, arrow.Height);
+                    //spriteBatch.Draw(arrow, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
+
+                    playerSpaceShip.Draw(spriteBatch, new Vector2(playerSpaceShip.X, playerSpaceShip.Y));
+                    //PlayerSpaceShip.Draw(spriteBatch, new Vector2   (300, 200));
+
+                    foreach (var enemyShip in enemySpaceShips)
+                    {
+                        enemyShip.Draw(spriteBatch, new Vector2(enemyShip.X, enemyShip.Y));
+                    }
+
+                    // enemySpaceShip1.Draw(spriteBatch, new Vector2(enemySpaceShip1.X, enemySpaceShip1.Y));
+                    // enemySpaceShip2.Draw(spriteBatch, new Vector2(enemySpaceShip2.X, enemySpaceShip2.Y));
+
+
+                    foreach (Bullets bullet in bullets)
+                    {
+                        bullet.Draw(spriteBatch);
+                    }
+
+                    
+
+                    
+                    break;
             }
-
-            // enemySpaceShip1.Draw(spriteBatch, new Vector2(enemySpaceShip1.X, enemySpaceShip1.Y));
-            // enemySpaceShip2.Draw(spriteBatch, new Vector2(enemySpaceShip2.X, enemySpaceShip2.Y));
-
-
-            foreach (Bullets bullet in bullets)
-            {
-                bullet.Draw(spriteBatch);
-            }
-
             spriteBatch.End();
-
             base.Draw(gameTime);
 
         }
