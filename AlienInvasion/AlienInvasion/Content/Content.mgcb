@@ -57,6 +57,17 @@
 /processorParam:TextureFormat=Color
 /build:Button_hard.png
 
+#begin Button_back.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:Button_back.png
+
 #begin arrow.png
 /importer:TextureImporter
 /processor:TextureProcessor

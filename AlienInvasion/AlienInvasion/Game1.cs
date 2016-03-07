@@ -15,6 +15,22 @@ namespace AlienInvasion
         SpriteBatch spriteBatch;
         EnemyManager enemyManager;
 
+        // menu
+        enum GameState
+        {
+            MainMenu,
+            Winners,
+            PlayingEasy,
+            PlayingMedium,
+            PlayingHard
+        }
+        GameState CurrentGameState = GameState.MainMenu;
+
+        private cButton btnPlayEasy;
+        private cButton btnPlayMedium;
+        private cButton btnPlayHard;
+        private cButton btnBack;
+
         private Texture2D background;
         //private Texture2D shuttle;
         private Texture2D earth;
@@ -72,6 +88,20 @@ namespace AlienInvasion
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            // menu
+            graphics.PreferredBackBufferWidth = this.borderRight;
+            graphics.PreferredBackBufferHeight = this.borderDown;
+            graphics.ApplyChanges();
+            IsMouseVisible = true;
+            this.btnPlayEasy = new cButton(Content.Load<Texture2D>("Button_easy"), this.graphics.GraphicsDevice);
+            this.btnPlayEasy.setPosition(new Vector2(35, 130));
+            this.btnPlayMedium = new cButton(Content.Load<Texture2D>("Button_medium"), this.graphics.GraphicsDevice);
+            this.btnPlayMedium.setPosition(new Vector2(35, 180));
+            this.btnPlayHard = new cButton(Content.Load<Texture2D>("Button_hard"), this.graphics.GraphicsDevice);
+            this.btnPlayHard.setPosition(new Vector2(35, 230));
+            this.btnBack = new cButton(Content.Load<Texture2D>("Button_back"), this.graphics.GraphicsDevice);
+            this.btnBack.setPosition(new Vector2(685, 430));
+
             // TODO: use this.Content to load your game content here
             enemyManager = new EnemyManager(Window.ClientBounds.Right, Window.ClientBounds.Height);
             background = Content.Load<Texture2D>("stars");
@@ -120,14 +150,66 @@ namespace AlienInvasion
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            //    Exit();
+
+            // menu
+            MouseState mouse = Mouse.GetState();
+
+            string gameDifficulty = String.Empty;
+
+            switch (CurrentGameState)
+            {
+                case GameState.MainMenu:
+                    if (this.btnPlayEasy.isClicked == true)
+                    {
+                        this.CurrentGameState = GameState.PlayingEasy;
+                    }
+                    this.btnPlayEasy.Update(mouse);
+                    if (this.btnPlayMedium.isClicked == true)
+                    {
+                        this.CurrentGameState = GameState.PlayingMedium;
+                    }
+                    this.btnPlayMedium.Update(mouse);
+                    if (this.btnPlayHard.isClicked == true)
+                    {
+                        this.CurrentGameState = GameState.PlayingHard;
+                    }
+                    this.btnPlayHard.Update(mouse);
+                    break;
+                case GameState.Winners:
+                    break;
+                case GameState.PlayingEasy:
+                    gameDifficulty = "easy";
+                    if (this.btnBack.isClicked == true)
+                    {
+                        this.CurrentGameState = GameState.MainMenu;
+                    }
+                    this.btnBack.Update(mouse);
+                    break;
+                case GameState.PlayingMedium:
+                    gameDifficulty = "medium";
+                    if (this.btnBack.isClicked == true)
+                    {
+                        this.CurrentGameState = GameState.MainMenu;
+                    }
+                    this.btnBack.Update(mouse);
+                    break;
+                case GameState.PlayingHard:
+                    gameDifficulty = "hard";
+                    if (this.btnBack.isClicked == true)
+                    {
+                        this.CurrentGameState = GameState.MainMenu;
+                    }
+                    this.btnBack.Update(mouse);
+                    break;
+            }
 
             // TODO: Add your update logic here
-            //angle += 0.01f;
+                    //angle += 0.01f;
 
-            //PlayerSpaceShip controls management
-            playerSpaceShip.Update();
+                    //PlayerSpaceShip controls management
+                    playerSpaceShip.Update();
             playerSpaceShip.Controls();
             enemyManager.Update(enemySpaceShips);
 
@@ -272,48 +354,64 @@ namespace AlienInvasion
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
-            spriteBatch.Begin();
-
-            spriteBatch.Draw(background, new Rectangle(0, 0, borderRight, borderDown), Color.White);
-            spriteBatch.Draw(earth, new Vector2(400, 240), Color.White);
-            //spriteBatch.Draw(shuttle, new Vector2(450, 240), Color.White);
-
-
-            spriteBatch.DrawString(font, "Score " + score, new Vector2(30, 410), Color.White);
-            spriteBatch.DrawString(font, "PlayerSpaceShip X,Y= " + playerSpaceShip.X + ", " + playerSpaceShip.Y, new Vector2(30, 430), Color.White);
-            spriteBatch.DrawString(font, "EnemySpaceShip1 X,Y= " + enemySpaceShips[0].X + ", " + enemySpaceShips[0].Y, new Vector2(30, 450), Color.White);
-            spriteBatch.DrawString(font, "EnemySpaceShip2 X,Y= " + enemySpaceShips[1].X + ", " + enemySpaceShips[1].Y, new Vector2(30, 465), Color.White);
-
-            //spriteBatch.DrawString(font, "ColisionRectForPlayer X,Y= " + co + ", " + enemySpaceShip1.Y, new Vector2(30, 465), Color.White);
-
-
-            Vector2 location = new Vector2(400, 240);
-            //Rectangle sourceRectangle = new Rectangle(0, 0, arrow.Width, arrow.Height);
-            //Vector2 origin = new Vector2(arrow.Width / 2, arrow.Height);
-            //spriteBatch.Draw(arrow, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
-
-            playerSpaceShip.Draw(spriteBatch, new Vector2(playerSpaceShip.X, playerSpaceShip.Y));
-            //PlayerSpaceShip.Draw(spriteBatch, new Vector2   (300, 200));
-
-            foreach (var enemyShip in enemySpaceShips)
+            // menu
+            this.spriteBatch.Begin();
+            switch (CurrentGameState)
             {
-                enemyShip.Draw(spriteBatch, new Vector2(enemyShip.X, enemyShip.Y));
+                case GameState.MainMenu:
+                    this.spriteBatch.Draw(
+                        Content.Load<Texture2D>("MainMenu"),
+                        new Rectangle(0, 0, this.borderRight, this.borderDown),
+                        Color.White);
+                    this.btnPlayEasy.Draw(this.spriteBatch);
+                    this.btnPlayMedium.Draw(this.spriteBatch);
+                    this.btnPlayHard.Draw(this.spriteBatch);
+                    break;
+                case GameState.Winners:
+                    break;
+                case GameState.PlayingEasy:
+                case GameState.PlayingMedium:
+                case GameState.PlayingHard:
+                    // TODO: Add your drawing code here
+
+                    spriteBatch.Draw(background, new Rectangle(0, 0, borderRight, borderDown), Color.White);
+                    spriteBatch.Draw(earth, new Vector2(400, 240), Color.White);
+                    //spriteBatch.Draw(shuttle, new Vector2(450, 240), Color.White);
+                    this.btnBack.Draw(this.spriteBatch);
+
+                    spriteBatch.DrawString(font, "Score " + score, new Vector2(30, 410), Color.White);
+                    spriteBatch.DrawString(font, "PlayerSpaceShip X,Y= " + playerSpaceShip.X + ", " + playerSpaceShip.Y, new Vector2(30, 430), Color.White);
+                    spriteBatch.DrawString(font, "EnemySpaceShip1 X,Y= " + enemySpaceShips[0].X + ", " + enemySpaceShips[0].Y, new Vector2(30, 450), Color.White);
+                    spriteBatch.DrawString(font, "EnemySpaceShip2 X,Y= " + enemySpaceShips[1].X + ", " + enemySpaceShips[1].Y, new Vector2(30, 465), Color.White);
+
+                    //spriteBatch.DrawString(font, "ColisionRectForPlayer X,Y= " + co + ", " + enemySpaceShip1.Y, new Vector2(30, 465), Color.White);
+
+
+                    Vector2 location = new Vector2(400, 240);
+                    //Rectangle sourceRectangle = new Rectangle(0, 0, arrow.Width, arrow.Height);
+                    //Vector2 origin = new Vector2(arrow.Width / 2, arrow.Height);
+                    //spriteBatch.Draw(arrow, location, sourceRectangle, Color.White, angle, origin, 1.0f, SpriteEffects.None, 1);
+
+                    playerSpaceShip.Draw(spriteBatch, new Vector2(playerSpaceShip.X, playerSpaceShip.Y));
+                    //PlayerSpaceShip.Draw(spriteBatch, new Vector2   (300, 200));
+
+                    foreach (var enemyShip in enemySpaceShips)
+                    {
+                        enemyShip.Draw(spriteBatch, new Vector2(enemyShip.X, enemyShip.Y));
+                    }
+
+                    // enemySpaceShip1.Draw(spriteBatch, new Vector2(enemySpaceShip1.X, enemySpaceShip1.Y));
+                    // enemySpaceShip2.Draw(spriteBatch, new Vector2(enemySpaceShip2.X, enemySpaceShip2.Y));
+
+
+                    foreach (Bullets bullet in bullets)
+                    {
+                        bullet.Draw(spriteBatch);
+                    }
+                    break;
             }
-
-            // enemySpaceShip1.Draw(spriteBatch, new Vector2(enemySpaceShip1.X, enemySpaceShip1.Y));
-            // enemySpaceShip2.Draw(spriteBatch, new Vector2(enemySpaceShip2.X, enemySpaceShip2.Y));
-
-
-            foreach (Bullets bullet in bullets)
-            {
-                bullet.Draw(spriteBatch);
-            }
-
             spriteBatch.End();
-
             base.Draw(gameTime);
-
         }
     }
 }

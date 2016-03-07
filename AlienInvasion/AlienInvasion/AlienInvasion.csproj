@@ -74,6 +74,7 @@
   <ItemGroup>
     <Content Include="Content\arrow.png" />
     <Content Include="Content\bullet01_1f_8p.png" />
+    <Content Include="Content\Button_back.png" />
     <Content Include="Content\Button_easy.png" />
     <Content Include="Content\Button_hard.png" />
     <Content Include="Content\Button_medium.png" />
