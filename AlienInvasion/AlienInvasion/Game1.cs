@@ -31,6 +31,7 @@ namespace AlienInvasion
         private cButton btnPlayMedium;
         private cButton btnPlayHard;
         private cButton btnBack;
+        public static Boolean exitgame = false;
 
         private Texture2D background;
         //private Texture2D shuttle;
@@ -269,7 +270,10 @@ namespace AlienInvasion
                     }
                 }
             }
-
+            //if (exitgame)
+            //{
+            //    this.CurrentGameState = GameState.MainMenu;
+            //}
             base.Update(gameTime);
         }
 
@@ -423,6 +427,7 @@ namespace AlienInvasion
                     if (playerSpaceShip.IsDestroyed)
                     {
                         spriteBatch.DrawString(font, "GAME OVER", new Vector2(Window.ClientBounds.Width / 2 - 50, Window.ClientBounds.Height / 2), Color.AntiqueWhite);
+                        exitgame = true;
                     }
 
                     spriteBatch.DrawString(font, "Score " + score, new Vector2(30, 410), Color.AntiqueWhite);
