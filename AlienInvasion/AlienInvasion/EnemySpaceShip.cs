@@ -25,22 +25,25 @@ namespace AlienInvasion
 
         public override void Update()
         {
-            this.CurrentFrame++;
-            if (CurrentFrame == TotalFrames)
-                CurrentFrame = 0;
-
-            this.Y++;
-            //ReturnEnemySpaceShipInFieldIfGoOutOfBorders();
-            if (this.IsDestroyed == true && this.CurrentFrame > 14)
+            if (IsActive)
             {
-                this.IsDestroyed = false;
-                this.Y = randomNumber.Next(-200, -65);
-                this.X = randomNumber.Next(75, WindowClientBoundsRight - 75);
-                this.Texture = this.DefaultTexture;
+                this.CurrentFrame++;
+                if (CurrentFrame == TotalFrames)
+                    CurrentFrame = 0;
 
+                this.Y++;
+                //ReturnEnemySpaceShipInFieldIfGoOutOfBorders();
+                if (this.IsDestroyed == true && this.CurrentFrame > 14)
+                {
+                    this.IsDestroyed = false;
+                    this.Y = randomNumber.Next(-200, -65);
+                    this.X = randomNumber.Next(75, WindowClientBoundsRight - 75);
+                    this.Texture = this.DefaultTexture;
+
+                }
             }
         }
 
-        
+
     }
 }

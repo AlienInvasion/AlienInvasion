@@ -12,8 +12,9 @@ namespace AlienInvasion
         private int x;
         private int y;
         private bool isDestroyed;
-        
+        private bool isActive = false;
 
+        
         private int windowClientBoundsRight;
         private int windowClientBoundsHeight;
 
@@ -40,6 +41,11 @@ namespace AlienInvasion
 
         public bool IsDestroyed { get; set; }
 
+        public bool IsActive
+        {
+            get { return this.isActive; }
+            set { this.isActive = value; }
+        }
         public int CurrentFrame
         {
             get { return this.currentFrame; }

@@ -16,6 +16,7 @@ namespace AlienInvasion
         EnemyManager enemyManager;
 
         // menu
+
         enum GameState
         {
             MainMenu,
@@ -25,7 +26,7 @@ namespace AlienInvasion
             PlayingHard
         }
         GameState CurrentGameState = GameState.MainMenu;
-
+        private string gameDifficulty = String.Empty;
         private cButton btnPlayEasy;
         private cButton btnPlayMedium;
         private cButton btnPlayHard;
@@ -42,6 +43,7 @@ namespace AlienInvasion
 
         private SpriteFont font;
         private int score = 0;
+        private bool isDifficultyLevelSet = false;
 
         private PlayerSpaceShip playerSpaceShip;
 
@@ -119,9 +121,60 @@ namespace AlienInvasion
 
             EnemySpaceShip enemySpaceShip1 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
             EnemySpaceShip enemySpaceShip2 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
+            EnemySpaceShip enemySpaceShip3 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
+            EnemySpaceShip enemySpaceShip4 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
+            EnemySpaceShip enemySpaceShip5 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
+            EnemySpaceShip enemySpaceShip6 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
+            EnemySpaceShip enemySpaceShip7 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
+            EnemySpaceShip enemySpaceShip8 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
+            EnemySpaceShip enemySpaceShip9 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
+            EnemySpaceShip enemySpaceShip10 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
 
             enemySpaceShips.Add(enemySpaceShip1);
             enemySpaceShips.Add(enemySpaceShip2);
+            enemySpaceShips.Add(enemySpaceShip3);
+            enemySpaceShips.Add(enemySpaceShip4);
+            enemySpaceShips.Add(enemySpaceShip5);
+            enemySpaceShips.Add(enemySpaceShip6);
+
+
+
+
+
+            //switch (gameDifficulty)
+            //{
+            //    case "easy":
+            //        {
+            //            enemySpaceShips.Add(enemySpaceShip1);
+            //            enemySpaceShips.Add(enemySpaceShip2);
+            //        }
+            //        break;
+
+            //    case "medium":
+            //        {
+            //            enemySpaceShips.Add(enemySpaceShip1);
+            //            enemySpaceShips.Add(enemySpaceShip2);
+            //            enemySpaceShips.Add(enemySpaceShip3);
+            //            enemySpaceShips.Add(enemySpaceShip4);
+            //        }
+            //        break;
+
+            //    case "hard":
+            //        {
+            //            enemySpaceShips.Add(enemySpaceShip1);
+            //            enemySpaceShips.Add(enemySpaceShip2);
+            //            enemySpaceShips.Add(enemySpaceShip3);
+            //            enemySpaceShips.Add(enemySpaceShip4);
+            //            enemySpaceShips.Add(enemySpaceShip5);
+            //            enemySpaceShips.Add(enemySpaceShip6);
+            //        }
+            //        break;
+
+            //    default:
+            //        return;
+
+            //}
+
 
 
             for (int i = 0; i < enemySpaceShips.Count; i++)
@@ -153,10 +206,8 @@ namespace AlienInvasion
             //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             //    Exit();
 
-            // menu
+            // menu **********************************
             MouseState mouse = Mouse.GetState();
-
-            string gameDifficulty = String.Empty;
 
             switch (CurrentGameState)
             {
@@ -206,10 +257,35 @@ namespace AlienInvasion
             }
 
             // TODO: Add your update logic here
-                    //angle += 0.01f;
+            //angle += 0.01f;
+            if (!isDifficultyLevelSet)
+            {
+                int numberOfEnemyShips = 0;
+                switch (gameDifficulty)
+                {
+                    case "easy":
+                        numberOfEnemyShips = 2;
+                        break;
 
-                    //PlayerSpaceShip controls management
-                    playerSpaceShip.Update();
+                    case "medium":
+                        numberOfEnemyShips = 4;
+                        break;
+
+                    case "hard":
+                        numberOfEnemyShips = 6;
+                        break;
+
+                    default:
+                        return;
+                }
+                for (int i = 0; i < numberOfEnemyShips; i++)
+                {
+                    enemySpaceShips[i].IsActive = true;
+                }
+            }
+
+            //PlayerSpaceShip controls management
+            playerSpaceShip.Update();
             playerSpaceShip.Controls();
             enemyManager.Update(enemySpaceShips);
 
@@ -379,10 +455,13 @@ namespace AlienInvasion
                     //spriteBatch.Draw(shuttle, new Vector2(450, 240), Color.White);
                     this.btnBack.Draw(this.spriteBatch);
 
+                    spriteBatch.DrawString(font, "Game difficulty= " + gameDifficulty, new Vector2(30, 380), Color.White);
                     spriteBatch.DrawString(font, "Score " + score, new Vector2(30, 410), Color.White);
                     spriteBatch.DrawString(font, "PlayerSpaceShip X,Y= " + playerSpaceShip.X + ", " + playerSpaceShip.Y, new Vector2(30, 430), Color.White);
                     spriteBatch.DrawString(font, "EnemySpaceShip1 X,Y= " + enemySpaceShips[0].X + ", " + enemySpaceShips[0].Y, new Vector2(30, 450), Color.White);
                     spriteBatch.DrawString(font, "EnemySpaceShip2 X,Y= " + enemySpaceShips[1].X + ", " + enemySpaceShips[1].Y, new Vector2(30, 465), Color.White);
+
+
 
                     //spriteBatch.DrawString(font, "ColisionRectForPlayer X,Y= " + co + ", " + enemySpaceShip1.Y, new Vector2(30, 465), Color.White);
 
