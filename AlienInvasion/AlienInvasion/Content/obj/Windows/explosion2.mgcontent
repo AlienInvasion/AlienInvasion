@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/explosion2.png</SourceFile>
-  <SourceTime>2016-03-08T10:11:04.29646+02:00</SourceTime>
+  <SourceTime>2016-03-08T11:30:36.6304219+02:00</SourceTime>
   <DestFile>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/bin/Windows/explosion2.xnb</DestFile>
-  <DestTime>2016-03-08T10:12:22.6739429+02:00</DestTime>
+  <DestTime>2016-03-08T11:31:13.767546+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T20:14:44+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

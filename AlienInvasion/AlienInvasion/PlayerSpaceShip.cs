@@ -31,24 +31,27 @@ namespace AlienInvasion
 
         public void Controls()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            if (!IsDestroyed)
             {
-                X += 2;
-            }
+                if (Keyboard.GetState().IsKeyDown(Keys.Right))
+                {
+                    X += 2;
+                }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Left))
-            {
-                X -= 2;
-            }
+                if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                {
+                    X -= 2;
+                }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
-            {
-                Y -= 2;
-            }
+                if (Keyboard.GetState().IsKeyDown(Keys.Up))
+                {
+                    Y -= 2;
+                }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Down))
-            {
-                Y += 2;
+                if (Keyboard.GetState().IsKeyDown(Keys.Down))
+                {
+                    Y += 2;
+                }
             }
         }
 

@@ -18,9 +18,10 @@ namespace AlienInvasion
 
         public void EnemyShipInitialize()
         {
-            this.Y = -100;
-            int randomPosition = randomNumber.Next(0, WindowClientBoundsRight - 100);
-            this.X = randomPosition;
+            this.Y = -300;
+            //int randomPosition = randomNumber.Next(0, WindowClientBoundsRight - 100);
+            //this.X = randomPosition;
+            this.X = 1000;
         }
 
         public override void Update()
@@ -36,12 +37,13 @@ namespace AlienInvasion
                 if (this.IsDestroyed == true && this.CurrentFrame > 14)
                 {
                     this.IsDestroyed = false;
-                    this.Y = randomNumber.Next(-200, -65);
+                    this.Y = randomNumber.Next(-200, -85);
                     this.X = randomNumber.Next(75, WindowClientBoundsRight - 75);
                     this.Texture = this.DefaultTexture;
 
                 }
             }
+            
         }
 
 

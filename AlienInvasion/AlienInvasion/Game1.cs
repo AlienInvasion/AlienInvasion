@@ -56,8 +56,6 @@ namespace AlienInvasion
         private Random randomNumber = new Random();
 
         //Colision detection variables
-        // Point playerSpaceShipPoint = new Point(200, 200);
-        // Point enemySpaceShipPoint = new Point(200, 300);
         int playerSpaceShipCollisionRectOffset = 10;
         int enemySpaceShipCollisionRectOffset = 10;
 
@@ -102,14 +100,12 @@ namespace AlienInvasion
             this.btnPlayHard = new cButton(Content.Load<Texture2D>("Button_hard"), this.graphics.GraphicsDevice);
             this.btnPlayHard.setPosition(new Vector2(35, 230));
             this.btnBack = new cButton(Content.Load<Texture2D>("Button_back"), this.graphics.GraphicsDevice);
-            this.btnBack.setPosition(new Vector2(685, 430));
+            this.btnBack.setPosition(new Vector2(11685, 430));
 
             // TODO: use this.Content to load your game content here
             enemyManager = new EnemyManager(Window.ClientBounds.Right, Window.ClientBounds.Height);
             background = Content.Load<Texture2D>("stars");
-            //shuttle = Content.Load<Texture2D>("shuttle");
             earth = Content.Load<Texture2D>("earth");
-            //arrow = Content.Load<Texture2D>("arrow");
             font = Content.Load<SpriteFont>("MainFont");
 
             Texture2D texturePlayerSpaceShip = Content.Load<Texture2D>("PlayerSpriteShipBlinkingLamp");
@@ -137,52 +133,12 @@ namespace AlienInvasion
             enemySpaceShips.Add(enemySpaceShip5);
             enemySpaceShips.Add(enemySpaceShip6);
 
-
-
-
-
-            //switch (gameDifficulty)
-            //{
-            //    case "easy":
-            //        {
-            //            enemySpaceShips.Add(enemySpaceShip1);
-            //            enemySpaceShips.Add(enemySpaceShip2);
-            //        }
-            //        break;
-
-            //    case "medium":
-            //        {
-            //            enemySpaceShips.Add(enemySpaceShip1);
-            //            enemySpaceShips.Add(enemySpaceShip2);
-            //            enemySpaceShips.Add(enemySpaceShip3);
-            //            enemySpaceShips.Add(enemySpaceShip4);
-            //        }
-            //        break;
-
-            //    case "hard":
-            //        {
-            //            enemySpaceShips.Add(enemySpaceShip1);
-            //            enemySpaceShips.Add(enemySpaceShip2);
-            //            enemySpaceShips.Add(enemySpaceShip3);
-            //            enemySpaceShips.Add(enemySpaceShip4);
-            //            enemySpaceShips.Add(enemySpaceShip5);
-            //            enemySpaceShips.Add(enemySpaceShip6);
-            //        }
-            //        break;
-
-            //    default:
-            //        return;
-
-            //}
-
-
-
             for (int i = 0; i < enemySpaceShips.Count; i++)
             {
                 //enemySpaceShips[i] = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
                 int randomPosition = randomNumber.Next(0, Window.ClientBounds.Right - 100);
                 enemySpaceShips[i].X = randomPosition;
-                randomPosition = randomNumber.Next(-175, -45);
+                randomPosition = randomNumber.Next(-175, -75);
                 enemySpaceShips[i].Y = randomPosition;
             }
         }
@@ -257,39 +213,13 @@ namespace AlienInvasion
             }
 
             // TODO: Add your update logic here
-            //angle += 0.01f;
-            if (!isDifficultyLevelSet)
-            {
-                int numberOfEnemyShips = 0;
-                switch (gameDifficulty)
-                {
-                    case "easy":
-                        numberOfEnemyShips = 2;
-                        break;
 
-                    case "medium":
-                        numberOfEnemyShips = 4;
-                        break;
-
-                    case "hard":
-                        numberOfEnemyShips = 6;
-                        break;
-
-                    default:
-                        return;
-                }
-                for (int i = 0; i < numberOfEnemyShips; i++)
-                {
-                    enemySpaceShips[i].IsActive = true;
-                }
-            }
-
-            //PlayerSpaceShip controls management
+            setEnemyShipsDependOnDifficulty();
+            
             playerSpaceShip.Update();
             playerSpaceShip.Controls();
             enemyManager.Update(enemySpaceShips);
-
-
+            // TODO: Move in enemy manager
             foreach (var enemyShip in enemySpaceShips)
             {
                 enemyShip.Update();
@@ -302,23 +232,25 @@ namespace AlienInvasion
                 {
                     playerSpaceShip.Texture = Content.Load<Texture2D>("explosion");
                     playerSpaceShip.IsDestroyed = true;
-                    //enemyShip.Texture = Content.Load<Texture2D>("explosion2");
                     enemyShip.Texture = Content.Load<Texture2D>("explosion");
                     enemyShip.IsDestroyed = true;
                     score++;
                 }
-
             }
 
             if (playerSpaceShip.IsDestroyed == true && playerSpaceShip.CurrentFrame > 14)
             {
                 playerSpaceShip.Texture = Content.Load<Texture2D>("emptySprite");
+                playerSpaceShip.X = 3000;
             }
 
             // Bullets shooting
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && pastKey.IsKeyUp(Keys.Space))
             {
-                Shoot();
+                if (!playerSpaceShip.IsDestroyed)
+                {
+                    Shoot();
+                }
             }
             pastKey = Keyboard.GetState();
 
@@ -331,13 +263,12 @@ namespace AlienInvasion
                 {
                     if (CollideBullets(bullet, enemyShip))
                     {
-                        //enemyShip.Texture = Content.Load<Texture2D>("explosion2");
                         enemyShip.CurrentFrame = randomNumber.Next(1, 4);
                         enemyShip.Texture = Content.Load<Texture2D>("explosion");
                         enemyShip.IsDestroyed = true;
-                        enemyShip.Y = -101;
+                        enemyShip.Y = -131;
                         bullet.Posituon += new Vector2(1000, -500);
-                        score++;
+                        score += 10;
                     }
                 }
             }
@@ -350,7 +281,6 @@ namespace AlienInvasion
             foreach (Bullets bullet in bullets)
             {
                 bullet.Posituon += new Vector2(0, -5);
-                //bullet.Velocity += new Vector2(100,200);
                 if (Vector2.Distance(bullet.Posituon, new Vector2(1, 1)) > 1070)
                 {
                     bullet.IsVisible = false;
@@ -370,7 +300,6 @@ namespace AlienInvasion
         public void Shoot()
         {
             Bullets newBullet = new Bullets(Content.Load<Texture2D>("bullet01_1f_8p"));
-            //newBullet.Velocity = new Vector2(180, 1000);
             newBullet.Posituon = new Vector2(playerSpaceShip.X + 30, playerSpaceShip.Y + 10);
             newBullet.IsVisible = true;
 
@@ -419,8 +348,47 @@ namespace AlienInvasion
             );
             result = colilisionRectForBullets.Intersects(colilisionRectForSpaceObject);
 
+            //If object is incaming and is over the screen he can`t be shooted
+            if (obj.Y < -50)
+            {
+                return false;
+            }
             return result;
         }
+
+        private void setEnemyShipsDependOnDifficulty()
+        {
+            if (!isDifficultyLevelSet)
+            {
+                int numberOfEnemyShips = 0;
+                switch (gameDifficulty)
+                {
+                    case "easy":
+                        numberOfEnemyShips = 2;
+                        break;
+
+                    case "medium":
+                        numberOfEnemyShips = 4;
+                        break;
+
+                    case "hard":
+                        numberOfEnemyShips = 6;
+                        break;
+
+                    default:
+                        return;
+                }
+
+                for (int i = 0; i < numberOfEnemyShips; i++)
+                {
+                    enemySpaceShips[i].IsActive = true;
+                }
+
+                isDifficultyLevelSet = true;
+            }
+        }
+
+
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -455,11 +423,20 @@ namespace AlienInvasion
                     //spriteBatch.Draw(shuttle, new Vector2(450, 240), Color.White);
                     this.btnBack.Draw(this.spriteBatch);
 
+                    if (playerSpaceShip.IsDestroyed)
+                    {
+                        spriteBatch.DrawString(font, "GAME OVER", new Vector2(Window.ClientBounds.Width / 2 - 50, Window.ClientBounds.Height / 2), Color.AntiqueWhite);
+                    }
+
                     spriteBatch.DrawString(font, "Game difficulty= " + gameDifficulty, new Vector2(30, 380), Color.White);
-                    spriteBatch.DrawString(font, "Score " + score, new Vector2(30, 410), Color.White);
+                    spriteBatch.DrawString(font, "Score " + score, new Vector2(30, 410), Color.AntiqueWhite);
                     spriteBatch.DrawString(font, "PlayerSpaceShip X,Y= " + playerSpaceShip.X + ", " + playerSpaceShip.Y, new Vector2(30, 430), Color.White);
                     spriteBatch.DrawString(font, "EnemySpaceShip1 X,Y= " + enemySpaceShips[0].X + ", " + enemySpaceShips[0].Y, new Vector2(30, 450), Color.White);
                     spriteBatch.DrawString(font, "EnemySpaceShip2 X,Y= " + enemySpaceShips[1].X + ", " + enemySpaceShips[1].Y, new Vector2(30, 465), Color.White);
+                    spriteBatch.DrawString(font, "EnemySpaceShip3 X,Y= " + enemySpaceShips[2].X + ", " + enemySpaceShips[2].Y, new Vector2(30, 300), Color.White);
+                    spriteBatch.DrawString(font, "EnemySpaceShip4 X,Y= " + enemySpaceShips[3].X + ", " + enemySpaceShips[3].Y, new Vector2(30, 315), Color.White);
+                    spriteBatch.DrawString(font, "EnemySpaceShip5 X,Y= " + enemySpaceShips[4].X + ", " + enemySpaceShips[4].Y, new Vector2(30, 330), Color.White);
+                    spriteBatch.DrawString(font, "EnemySpaceShip6 X,Y= " + enemySpaceShips[5].X + ", " + enemySpaceShips[5].Y, new Vector2(30, 345), Color.White);
 
 
 
@@ -478,10 +455,6 @@ namespace AlienInvasion
                     {
                         enemyShip.Draw(spriteBatch, new Vector2(enemyShip.X, enemyShip.Y));
                     }
-
-                    // enemySpaceShip1.Draw(spriteBatch, new Vector2(enemySpaceShip1.X, enemySpaceShip1.Y));
-                    // enemySpaceShip2.Draw(spriteBatch, new Vector2(enemySpaceShip2.X, enemySpaceShip2.Y));
-
 
                     foreach (Bullets bullet in bullets)
                     {
