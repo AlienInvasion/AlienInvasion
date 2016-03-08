@@ -215,7 +215,7 @@ namespace AlienInvasion
             // TODO: Add your update logic here
 
             setEnemyShipsDependOnDifficulty();
-            
+
             playerSpaceShip.Update();
             playerSpaceShip.Controls();
             enemyManager.Update(enemySpaceShips);
@@ -234,14 +234,8 @@ namespace AlienInvasion
                     playerSpaceShip.IsDestroyed = true;
                     enemyShip.Texture = Content.Load<Texture2D>("explosion");
                     enemyShip.IsDestroyed = true;
-                    score++;
+                    score += 10;
                 }
-            }
-
-            if (playerSpaceShip.IsDestroyed == true && playerSpaceShip.CurrentFrame > 14)
-            {
-                playerSpaceShip.Texture = Content.Load<Texture2D>("emptySprite");
-                playerSpaceShip.X = 3000;
             }
 
             // Bullets shooting
@@ -263,10 +257,13 @@ namespace AlienInvasion
                 {
                     if (CollideBullets(bullet, enemyShip))
                     {
-                        enemyShip.CurrentFrame = randomNumber.Next(1, 4);
-                        enemyShip.Texture = Content.Load<Texture2D>("explosion");
+                        if (!enemyShip.IsDestroyed)
+                        {
+                            enemyShip.CurrentFrame = randomNumber.Next(1, 4);
+                            enemyShip.Texture = Content.Load<Texture2D>("explosion");
+                        }
                         enemyShip.IsDestroyed = true;
-                        enemyShip.Y = -131;
+                        //enemyShip.Y = -131;
                         bullet.Posituon += new Vector2(1000, -500);
                         score += 10;
                     }
@@ -428,15 +425,16 @@ namespace AlienInvasion
                         spriteBatch.DrawString(font, "GAME OVER", new Vector2(Window.ClientBounds.Width / 2 - 50, Window.ClientBounds.Height / 2), Color.AntiqueWhite);
                     }
 
-                    spriteBatch.DrawString(font, "Game difficulty= " + gameDifficulty, new Vector2(30, 380), Color.White);
                     spriteBatch.DrawString(font, "Score " + score, new Vector2(30, 410), Color.AntiqueWhite);
-                    spriteBatch.DrawString(font, "PlayerSpaceShip X,Y= " + playerSpaceShip.X + ", " + playerSpaceShip.Y, new Vector2(30, 430), Color.White);
-                    spriteBatch.DrawString(font, "EnemySpaceShip1 X,Y= " + enemySpaceShips[0].X + ", " + enemySpaceShips[0].Y, new Vector2(30, 450), Color.White);
-                    spriteBatch.DrawString(font, "EnemySpaceShip2 X,Y= " + enemySpaceShips[1].X + ", " + enemySpaceShips[1].Y, new Vector2(30, 465), Color.White);
-                    spriteBatch.DrawString(font, "EnemySpaceShip3 X,Y= " + enemySpaceShips[2].X + ", " + enemySpaceShips[2].Y, new Vector2(30, 300), Color.White);
-                    spriteBatch.DrawString(font, "EnemySpaceShip4 X,Y= " + enemySpaceShips[3].X + ", " + enemySpaceShips[3].Y, new Vector2(30, 315), Color.White);
-                    spriteBatch.DrawString(font, "EnemySpaceShip5 X,Y= " + enemySpaceShips[4].X + ", " + enemySpaceShips[4].Y, new Vector2(30, 330), Color.White);
-                    spriteBatch.DrawString(font, "EnemySpaceShip6 X,Y= " + enemySpaceShips[5].X + ", " + enemySpaceShips[5].Y, new Vector2(30, 345), Color.White);
+                    
+                    //spriteBatch.DrawString(font, "Game difficulty= " + gameDifficulty, new Vector2(30, 380), Color.White);
+                    //  spriteBatch.DrawString(font, "PlayerSpaceShip X,Y= " + playerSpaceShip.X + ", " + playerSpaceShip.Y, new Vector2(30, 430), Color.White);
+                    //  spriteBatch.DrawString(font, "EnemySpaceShip1 X,Y= " + enemySpaceShips[0].X + ", " + enemySpaceShips[0].Y, new Vector2(30, 450), Color.White);
+                    //  spriteBatch.DrawString(font, "EnemySpaceShip2 X,Y= " + enemySpaceShips[1].X + ", " + enemySpaceShips[1].Y, new Vector2(30, 465), Color.White);
+                    //  spriteBatch.DrawString(font, "EnemySpaceShip3 X,Y= " + enemySpaceShips[2].X + ", " + enemySpaceShips[2].Y, new Vector2(30, 300), Color.White);
+                    //  spriteBatch.DrawString(font, "EnemySpaceShip4 X,Y= " + enemySpaceShips[3].X + ", " + enemySpaceShips[3].Y, new Vector2(30, 315), Color.White);
+                    //  spriteBatch.DrawString(font, "EnemySpaceShip5 X,Y= " + enemySpaceShips[4].X + ", " + enemySpaceShips[4].Y, new Vector2(30, 330), Color.White);
+                    //  spriteBatch.DrawString(font, "EnemySpaceShip6 X,Y= " + enemySpaceShips[5].X + ", " + enemySpaceShips[5].Y, new Vector2(30, 345), Color.White);
 
 
 

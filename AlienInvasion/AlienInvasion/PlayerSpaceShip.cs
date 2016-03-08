@@ -27,6 +27,7 @@ namespace AlienInvasion
             if (CurrentFrame == TotalFrames)
                 CurrentFrame = 0;
             KeepPlayerSpaceShipInBorders();
+            IfPlayerIsDestroyed();
         }
 
         public void Controls()
@@ -57,24 +58,35 @@ namespace AlienInvasion
 
         private void KeepPlayerSpaceShipInBorders()
         {
-            if (this.X < 0)
+            if (!IsDestroyed)
             {
-                this.X = 0;
-            }
+                if (this.X < 0)
+                {
+                    this.X = 0;
+                }
 
-            if (this.X > WindowClientBoundsRight - 60)
-            {
-                this.X = WindowClientBoundsRight - 60;
-            }
+                if (this.X > WindowClientBoundsRight - 60)
+                {
+                    this.X = WindowClientBoundsRight - 60;
+                }
 
-            if (this.Y < 0)
-            {
-                this.Y = 0;
-            }
+                if (this.Y < 0)
+                {
+                    this.Y = 0;
+                }
 
-            if (this.Y > WindowClientBoundsHeight - 60)
+                if (this.Y > WindowClientBoundsHeight - 60)
+                {
+                    this.Y = WindowClientBoundsHeight - 60;
+                }
+            }
+        }
+
+        private void IfPlayerIsDestroyed()
+        {
+            if (this.IsDestroyed == true && this.CurrentFrame > 14)
             {
-                this.Y = WindowClientBoundsHeight - 60;
+                this.X = 3000;
             }
         }
     }
