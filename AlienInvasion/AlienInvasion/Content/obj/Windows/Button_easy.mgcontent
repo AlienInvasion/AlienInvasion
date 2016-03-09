@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Pavleta/Desktop/game_simeon/2016-03-08/AlienInvasion/AlienInvasion/AlienInvasion/Content/Button_easy.png</SourceFile>
-  <SourceTime>2016-03-08T23:21:36.3392523+02:00</SourceTime>
-  <DestFile>C:/Users/Pavleta/Desktop/game_simeon/2016-03-08/AlienInvasion/AlienInvasion/AlienInvasion/Content/bin/Windows/Button_easy.xnb</DestFile>
-  <DestTime>2016-03-08T23:21:42.6620052+02:00</DestTime>
+  <SourceFile>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/Button_easy.png</SourceFile>
+  <SourceTime>2016-03-09T09:43:52.8824245+02:00</SourceTime>
+  <DestFile>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/bin/Windows/Button_easy.xnb</DestFile>
+  <DestTime>2016-03-09T09:44:35.5988677+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T20:14:44+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

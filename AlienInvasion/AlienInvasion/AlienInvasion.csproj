@@ -73,6 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\arrow.png" />
+    <Content Include="Content\boom1.wav" />
+    <Content Include="Content\boom2.wav" />
+    <Content Include="Content\boom3.wav" />
     <Content Include="Content\bullet01_1f_8p.png" />
     <Content Include="Content\Button_back.png" />
     <Content Include="Content\Button_easy.png" />
@@ -84,8 +87,11 @@
     <Content Include="Content\explosion.png" />
     <Content Include="Content\explosion2.png" />
     <Content Include="Content\MainMenu.jpg" />
+    <Content Include="Content\musicBackgrownd.mp3" />
     <Content Include="Content\PlayerSpriteShipBlinkingLamp.png" />
     <Content Include="Content\PlayerSpriteShip_4x4_001.png" />
+    <Content Include="Content\shoot1.wma" />
+    <Content Include="Content\shoot2.wav" />
     <Content Include="Content\shuttle.png" />
     <Content Include="Content\stars.jpg" />
     <Content Include="Icon.ico" />

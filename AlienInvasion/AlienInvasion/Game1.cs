@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace AlienInvasion
 {
@@ -59,6 +61,15 @@ namespace AlienInvasion
         //Colision detection variables
         int playerSpaceShipCollisionRectOffset = 10;
         int enemySpaceShipCollisionRectOffset = 10;
+
+        // music
+        Song musicBackgrownd;
+
+        SoundEffect shootSoundEffect1;
+        SoundEffect boomSoundEffect1;
+        SoundEffect boomSoundEffect2;
+        SoundEffect boomSoundEffect3;
+
 
         public Game1()
         {
@@ -142,6 +153,20 @@ namespace AlienInvasion
                 randomPosition = randomNumber.Next(-175, -75);
                 enemySpaceShips[i].Y = randomPosition;
             }
+
+            //music
+            this.musicBackgrownd = Content.Load<Song>("musicBackgrownd");
+            //this.musicBackgrownd = Content.Load<Song>("shoot1");
+            MediaPlayer.Play(musicBackgrownd);
+
+            shootSoundEffect1 = Content.Load<SoundEffect>("shoot2");
+            boomSoundEffect1 = Content.Load<SoundEffect>("boom1");
+            boomSoundEffect2 = Content.Load<SoundEffect>("boom2");
+            boomSoundEffect3 = Content.Load<SoundEffect>("boom3");
+
+            //  Uncomment the following line will also loop the song
+            MediaPlayer.IsRepeating = true;
+            //MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
         }
 
         /// <summary>
@@ -162,6 +187,10 @@ namespace AlienInvasion
         {
             //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             //    Exit();
+
+            // music
+            //    if (Keyboard.GetState().IsKeyDown(Keys.PageUp) == true )
+            //       Exit();
 
             // menu **********************************
             MouseState mouse = Mouse.GetState();
@@ -304,14 +333,19 @@ namespace AlienInvasion
             newBullet.Posituon = new Vector2(playerSpaceShip.X + 30, playerSpaceShip.Y + 10);
             newBullet.IsVisible = true;
 
+            // music
+            //MediaPlayer.Play(shootSound1);
+
             if (bullets.Count < 20)
             {
+                shootSoundEffect1.Play();
                 bullets.Add(newBullet);
             }
         }
 
         protected bool CollideShips(SpaceObject obj1, SpaceObject obj2)
         {
+            bool result = false;
             Rectangle colilisionRectForShip1 = new Rectangle(
                (int)obj1.X,
                (int)obj1.Y,
@@ -326,7 +360,14 @@ namespace AlienInvasion
                 50
                 );
 
-            return colilisionRectForShip1.Intersects(colilisionRectForShip2);
+            result = colilisionRectForShip1.Intersects(colilisionRectForShip2);
+
+            if (result == true)
+            {
+                SFXRandomExplosionPlay();
+            }
+
+            return result;
 
         }
 
@@ -353,6 +394,10 @@ namespace AlienInvasion
             if (obj.Y < -50)
             {
                 return false;
+            }
+            if (result == true)
+            {
+                SFXRandomExplosionPlay();
             }
             return result;
         }
@@ -389,7 +434,31 @@ namespace AlienInvasion
             }
         }
 
+        //music
+        void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
+        {
+            // 0.0f is silent, 1.0f is full volume
+            MediaPlayer.Volume -= 0.1f;
+            MediaPlayer.Play(musicBackgrownd);
+        }
 
+        void SFXRandomExplosionPlay()
+        {
+            int randomNumberSFX = randomNumber.Next(1, 4);
+
+            switch (randomNumberSFX)
+            {
+                case 1:
+                    boomSoundEffect1.Play();
+                    break;
+                case 2:
+                    boomSoundEffect2.Play();
+                    break;
+                case 3:
+                    boomSoundEffect3.Play();
+                    break;
+            }
+        }
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -430,8 +499,8 @@ namespace AlienInvasion
                         exitgame = true;
                     }
 
-                    spriteBatch.DrawString(font, "Score " + score, new Vector2(30, 410), Color.AntiqueWhite);
-                    
+                    spriteBatch.DrawString(font, "Score " + score, new Vector2(30, 450), Color.AntiqueWhite);
+
                     //spriteBatch.DrawString(font, "Game difficulty= " + gameDifficulty, new Vector2(30, 380), Color.White);
                     //  spriteBatch.DrawString(font, "PlayerSpaceShip X,Y= " + playerSpaceShip.X + ", " + playerSpaceShip.Y, new Vector2(30, 430), Color.White);
                     //  spriteBatch.DrawString(font, "EnemySpaceShip1 X,Y= " + enemySpaceShips[0].X + ", " + enemySpaceShips[0].Y, new Vector2(30, 450), Color.White);

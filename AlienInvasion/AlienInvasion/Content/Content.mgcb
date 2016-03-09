@@ -195,3 +195,39 @@
 /processorParam:TextureFormat=Color
 /build:bullet01_1f_8p.png
 
+#begin musicBackgrownd.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:musicBackgrownd.mp3
+
+#begin shoot1.wma
+/importer:WmaImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:shoot1.wma
+
+#begin shoot2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:shoot2.wav
+
+#begin boom1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:boom1.wav
+
+#begin boom2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:boom2.wav
+
+#begin boom3.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:boom3.wav
+
