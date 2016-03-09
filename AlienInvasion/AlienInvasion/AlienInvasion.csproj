@@ -57,6 +57,7 @@
     <Compile Include="cButton.cs" />
     <Compile Include="EnemyManager.cs" />
     <Compile Include="EnemySpaceShip.cs" />
+    <Compile Include="EnemySpaceShipExtraFast.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Interfaces\IBullet.cs" />
     <Compile Include="Interfaces\IEnemySpaceShip.cs" />
@@ -87,6 +88,7 @@
     <Content Include="Content\earth.png" />
     <Content Include="Content\emptySprite.png" />
     <Content Include="Content\EnemySpriteShipClear.png" />
+    <Content Include="Content\EnemySpriteShipGreenClear.png" />
     <Content Include="Content\explosion.png" />
     <Content Include="Content\explosion2.png" />
     <Content Include="Content\MainMenu.jpg" />

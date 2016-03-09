@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 using AlienInvasion.Interfaces;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AlienInvasion
 {
-    public class EnemySpaceShip : SpaceObject, IEnemySpaceShip
+    public class EnemySpaceShipExtraFast : SpaceObject, IEnemySpaceShip
     {
         Random randomNumber = new Random();
 
-        public EnemySpaceShip(Texture2D texture, Texture2D defaultTexture, int rows, int columns, int windowClientBoundsRight, int windowClientBoundsHeight)
+        public EnemySpaceShipExtraFast(Texture2D texture, Texture2D defaultTexture, int rows, int columns, int windowClientBoundsRight, int windowClientBoundsHeight)
             : base(texture, defaultTexture, rows, columns, windowClientBoundsRight, windowClientBoundsHeight)
         {
         }
@@ -22,7 +19,7 @@ namespace AlienInvasion
             this.Y = -300;
             this.X = 1000;
             //new
-            this.PointToScore = 10;
+            this.PointToScore = 20;
         }
 
         public override void Update()
@@ -33,7 +30,7 @@ namespace AlienInvasion
                 if (CurrentFrame == TotalFrames)
                     CurrentFrame = 0;
 
-                this.Y += 1;
+                this.Y += 2;
 
                 if (this.IsDestroyed == true && this.CurrentFrame > 14)
                 {
@@ -44,5 +41,6 @@ namespace AlienInvasion
                 }
             }
         }
+
     }
 }

@@ -110,21 +110,21 @@ namespace AlienInvasion
 
             Texture2D texturePlayerSpaceShip = this.Content.Load<Texture2D>("PlayerSpriteShipBlinkingLamp");
             Texture2D textureEnemySpaceShip = this.Content.Load<Texture2D>("EnemySpriteShipClear");
+            Texture2D textureEnemySpaceShipExtraFast = this.Content.Load<Texture2D>("EnemySpriteShipGreenClear");
 
             this.playerSpaceShip = new PlayerSpaceShip(texturePlayerSpaceShip, texturePlayerSpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
             this.playerSpaceShip.X = 400;
             this.playerSpaceShip.Y = 360;
-
             IEnemySpaceShip enemySpaceShip1 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
             IEnemySpaceShip enemySpaceShip2 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
             IEnemySpaceShip enemySpaceShip3 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
-            IEnemySpaceShip enemySpaceShip4 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
+            IEnemySpaceShip enemySpaceShip4 = new EnemySpaceShipExtraFast(textureEnemySpaceShipExtraFast, textureEnemySpaceShipExtraFast, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
             IEnemySpaceShip enemySpaceShip5 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
-            IEnemySpaceShip enemySpaceShip6 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
-            IEnemySpaceShip enemySpaceShip7 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
-            IEnemySpaceShip enemySpaceShip8 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
+            IEnemySpaceShip enemySpaceShip6 = new EnemySpaceShipExtraFast(textureEnemySpaceShipExtraFast, textureEnemySpaceShipExtraFast, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
+            IEnemySpaceShip enemySpaceShip7 = new EnemySpaceShipExtraFast(textureEnemySpaceShipExtraFast, textureEnemySpaceShipExtraFast, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
+            IEnemySpaceShip enemySpaceShip8 = new EnemySpaceShipExtraFast(textureEnemySpaceShipExtraFast, textureEnemySpaceShipExtraFast, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
             IEnemySpaceShip enemySpaceShip9 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
-            IEnemySpaceShip enemySpaceShip10 = new EnemySpaceShip(textureEnemySpaceShip, textureEnemySpaceShip, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
+            IEnemySpaceShip enemySpaceShip10 = new EnemySpaceShipExtraFast(textureEnemySpaceShipExtraFast, textureEnemySpaceShipExtraFast, 4, 4, Window.ClientBounds.Right, Window.ClientBounds.Height);
 
             enemySpaceShips.Add(enemySpaceShip1);
             enemySpaceShips.Add(enemySpaceShip2);
@@ -132,14 +132,20 @@ namespace AlienInvasion
             enemySpaceShips.Add(enemySpaceShip4);
             enemySpaceShips.Add(enemySpaceShip5);
             enemySpaceShips.Add(enemySpaceShip6);
+            //new 
+            enemySpaceShips.Add(enemySpaceShip7);
 
             for (int i = 0; i < enemySpaceShips.Count; i++)
             {
+                //new
+                enemySpaceShips[i].EnemyShipInitialize();
+
                 int randomPosition = randomNumber.Next(0, Window.ClientBounds.Right - 100);
                 enemySpaceShips[i].X = randomPosition;
                 randomPosition = randomNumber.Next(-175, -75);
                 enemySpaceShips[i].Y = randomPosition;
             }
+
 
             //music
             this.musicBackgrownd = Content.Load<Song>("musicBackgrownd");
@@ -324,7 +330,7 @@ namespace AlienInvasion
                     playerSpaceShip.IsDestroyed = true;
                     enemyShip.Texture = Content.Load<Texture2D>("explosion");
                     enemyShip.IsDestroyed = true;
-                    score += 10;
+                    score += enemyShip.PointToScore;
                 }
             }
         }
@@ -344,7 +350,7 @@ namespace AlienInvasion
                         }
                         enemyShip.IsDestroyed = true;
                         bullet.Posituon += new Vector2(1000, -500);
-                        score += 10;
+                        score += enemyShip.PointToScore;
                     }
                 }
             }
@@ -418,15 +424,15 @@ namespace AlienInvasion
                 switch (gameDifficulty)
                 {
                     case "easy":
-                        numberOfEnemyShips = 2;
+                        numberOfEnemyShips = 3;
                         break;
 
                     case "medium":
-                        numberOfEnemyShips = 4;
+                        numberOfEnemyShips = 5;
                         break;
 
                     case "hard":
-                        numberOfEnemyShips = 6;
+                        numberOfEnemyShips = 7;
                         break;
 
                     default:

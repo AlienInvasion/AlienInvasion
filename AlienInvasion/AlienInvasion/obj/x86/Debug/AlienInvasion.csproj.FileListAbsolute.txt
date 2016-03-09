@@ -261,3 +261,4 @@ C:\Users\Pavleta\Desktop\game_simeon\2016-03-09___\AlienInvasion\AlienInvasion\A
 C:\Users\Pavleta\Desktop\game_simeon\2016-03-09___\AlienInvasion\AlienInvasion\AlienInvasion\bin\Windows\Debug\SharpDX.RawInput.xml
 C:\Users\Pavleta\Desktop\game_simeon\2016-03-09___\AlienInvasion\AlienInvasion\AlienInvasion\bin\Windows\Debug\SharpDX.Direct3D9.xml
 C:\Users\Pavleta\Desktop\game_simeon\2016-03-09___\AlienInvasion\AlienInvasion\AlienInvasion\obj\x86\Debug\AlienInvasion.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\GitHubRepository\AlienInvasion\AlienInvasion\AlienInvasion\bin\Windows\Debug\Content\EnemySpriteShipGreenClear.xnb

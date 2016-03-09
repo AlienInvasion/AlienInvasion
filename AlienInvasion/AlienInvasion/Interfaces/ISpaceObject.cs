@@ -5,6 +5,9 @@ namespace AlienInvasion.Interfaces
 {
     public interface ISpaceObject
     {
+        //new
+        int PointToScore { get; set; }
+
         Texture2D Texture { get; set; }
         Texture2D DefaultTexture { get; set; }
         int Rows { get; set; }

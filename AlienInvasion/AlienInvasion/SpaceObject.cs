@@ -4,10 +4,20 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using AlienInvasion.Interfaces;
 
-namespace AlienInvasion 
+namespace AlienInvasion
 {
     public abstract class SpaceObject : ISpaceObject
     {
+        //new
+        private int pointToScore;
+
+        public int PointToScore
+        {
+            get { return pointToScore; }
+            set { pointToScore = value; }
+        }
+
+
         private int currentFrame;
         private int totalFrames;
         private int x;
@@ -15,7 +25,7 @@ namespace AlienInvasion
         private bool isDestroyed;
         private bool isActive = false;
 
-        
+
         private int windowClientBoundsRight;
         private int windowClientBoundsHeight;
 
@@ -33,7 +43,7 @@ namespace AlienInvasion
 
         public Texture2D Texture { get; set; }
         public Texture2D DefaultTexture { get; set; }
-        
+
         public int Rows { get; set; }
         public int Columns { get; set; }
 
@@ -72,7 +82,7 @@ namespace AlienInvasion
         }
 
         public abstract void Update();
-        
+
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
