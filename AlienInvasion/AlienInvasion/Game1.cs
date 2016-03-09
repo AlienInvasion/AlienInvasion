@@ -145,6 +145,7 @@ namespace AlienInvasion
             this.musicBackgrownd = Content.Load<Song>("musicBackgrownd");
             MediaPlayer.Play(musicBackgrownd);
             MediaPlayer.IsRepeating = true;
+            MediaPlayer.Volume = 0.5f;
             shootSoundEffect1 = Content.Load<SoundEffect>("shoot2");
             boomSoundEffect1 = Content.Load<SoundEffect>("boom1");
             boomSoundEffect2 = Content.Load<SoundEffect>("boom2");
@@ -173,6 +174,10 @@ namespace AlienInvasion
             // menu **********************************
             CheckForCurrentGameState();
             //menu end
+
+            MusicVolumeControl();
+
+
 
             setEnemyShipsDependOnDifficulty();
             playerSpaceShip.Update();
@@ -240,6 +245,19 @@ namespace AlienInvasion
             }
         }
         //menu end
+
+        private void MusicVolumeControl()
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.PageUp))
+            {
+                MediaPlayer.Volume += 0.01f;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.PageDown))
+            {
+                MediaPlayer.Volume -= 0.01f;
+            }
+        }
 
         public void UpdateBullets()
         {
