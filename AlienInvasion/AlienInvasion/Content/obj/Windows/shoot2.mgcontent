@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/shoot2.wav</SourceFile>
-  <SourceTime>2016-03-09T11:21:58.8700837+02:00</SourceTime>
+  <SourceTime>2016-03-09T12:23:01.0885507+02:00</SourceTime>
   <DestFile>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/bin/Windows/shoot2.xnb</DestFile>
-  <DestTime>2016-03-09T11:22:57.1574176+02:00</DestTime>
+  <DestTime>2016-03-09T13:19:59.3090617+02:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2015-04-29T20:14:44+03:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

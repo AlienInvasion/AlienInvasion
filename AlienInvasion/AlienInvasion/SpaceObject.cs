@@ -2,10 +2,11 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using AlienInvasion.Interfaces;
 
-namespace AlienInvasion
+namespace AlienInvasion 
 {
-    public abstract class SpaceObject
+    public abstract class SpaceObject : ISpaceObject
     {
         private int currentFrame;
         private int totalFrames;

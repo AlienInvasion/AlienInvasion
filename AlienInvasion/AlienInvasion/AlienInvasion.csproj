@@ -58,6 +58,9 @@
     <Compile Include="EnemyManager.cs" />
     <Compile Include="EnemySpaceShip.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Interfaces\IBullet.cs" />
+    <Compile Include="Interfaces\IEnemySpaceShip.cs" />
+    <Compile Include="Interfaces\ISpaceObject.cs" />
     <Compile Include="PlayerSpaceShip.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

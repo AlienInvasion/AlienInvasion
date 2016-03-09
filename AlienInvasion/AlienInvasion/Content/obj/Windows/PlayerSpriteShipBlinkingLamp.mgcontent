@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/PlayerSpriteShipBlinkingLamp.png</SourceFile>
-  <SourceTime>2016-03-09T09:43:52.8864247+02:00</SourceTime>
+  <SourceTime>2016-03-09T12:23:00.9745441+02:00</SourceTime>
   <DestFile>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/bin/Windows/PlayerSpriteShipBlinkingLamp.xnb</DestFile>
-  <DestTime>2016-03-09T09:44:35.6278694+02:00</DestTime>
+  <DestTime>2016-03-09T13:19:53.894752+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T20:14:44+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

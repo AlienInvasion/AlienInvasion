@@ -10,12 +10,6 @@ namespace AlienInvasion
 {
     public class PlayerSpaceShip : SpaceObject
     {
-
-        //private int currentFrame;
-        //private int totalFrames;
-        //private int x;
-        //private int y;
-
         public PlayerSpaceShip(Texture2D texture, Texture2D defaultTexture, int rows, int columns, int windowClientBoundsRight, int windowClientBoundsHeight)
             : base(texture, defaultTexture, rows, columns, windowClientBoundsRight, windowClientBoundsHeight)
         {

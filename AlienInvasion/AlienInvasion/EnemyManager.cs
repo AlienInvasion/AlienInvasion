@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Security.Cryptography.X509Certificates;
+using AlienInvasion.Interfaces;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -33,13 +34,13 @@ namespace AlienInvasion
             WindowClientBoundsHeight = windowClientBoundsHeight;
         }
 
-        public void Update(IList<EnemySpaceShip> enemySpaceShips)
+        public void Update(IList<IEnemySpaceShip> enemySpaceShips)
         {
             ReturnEnemySpaceShipInFieldIfGoOutOfBorders(enemySpaceShips);
             RandomizeEnemySpaceShips(enemySpaceShips);
         }
 
-        internal void ReturnEnemySpaceShipInFieldIfGoOutOfBorders(IList<EnemySpaceShip> enemySpaceShips)
+        internal void ReturnEnemySpaceShipInFieldIfGoOutOfBorders(IList<IEnemySpaceShip> enemySpaceShips)
         {
             foreach (var enemyShip in enemySpaceShips)
             {
@@ -51,7 +52,7 @@ namespace AlienInvasion
             }
         }
 
-        internal void RandomizeEnemySpaceShips(IList<EnemySpaceShip> enemySpaceShips)
+        internal void RandomizeEnemySpaceShips(IList<IEnemySpaceShip> enemySpaceShips)
         {
             foreach (var enemyShip in enemySpaceShips)
             {
