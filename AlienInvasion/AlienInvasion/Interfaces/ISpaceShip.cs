@@ -3,11 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AlienInvasion.Interfaces
 {
-    public interface ISpaceObject
+    public interface ISpaceShip
     {
-        //new
         int PointToScore { get; set; }
-
         Texture2D Texture { get; set; }
         Texture2D DefaultTexture { get; set; }
         int Rows { get; set; }

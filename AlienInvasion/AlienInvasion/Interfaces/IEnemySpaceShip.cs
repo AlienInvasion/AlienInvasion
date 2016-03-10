@@ -1,6 +1,6 @@
 ﻿namespace AlienInvasion.Interfaces
 {
-    public interface IEnemySpaceShip : ISpaceObject
+    public interface IEnemySpaceShip : ISpaceShip
     {
         void EnemyShipInitialize();
     }

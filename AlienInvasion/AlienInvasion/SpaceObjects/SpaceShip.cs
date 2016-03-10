@@ -6,7 +6,7 @@ using AlienInvasion.Interfaces;
 
 namespace AlienInvasion
 {
-    public abstract class SpaceObject : ISpaceObject
+    public abstract class SpaceShip : ISpaceShip
     {
         //new
         private int pointToScore;
@@ -29,7 +29,7 @@ namespace AlienInvasion
         private int windowClientBoundsRight;
         private int windowClientBoundsHeight;
 
-        protected SpaceObject(Texture2D texture, Texture2D defaultTexture, int rows, int columns, int windowClientBoundsRight, int windowClientBoundsHeight)
+        protected SpaceShip(Texture2D texture, Texture2D defaultTexture, int rows, int columns, int windowClientBoundsRight, int windowClientBoundsHeight)
         {
             this.Texture = texture;
             this.DefaultTexture = defaultTexture;

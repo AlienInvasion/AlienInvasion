@@ -53,19 +53,20 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Bullets.cs" />
-    <Compile Include="cButton.cs" />
-    <Compile Include="EnemyManager.cs" />
-    <Compile Include="EnemySpaceShip.cs" />
-    <Compile Include="EnemySpaceShipExtraFast.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="Core\GameState.cs" />
+    <Compile Include="PlayerWeapons\Bullet.cs" />
+    <Compile Include="MenuUtils\Button.cs" />
+    <Compile Include="Core\EnemyManager.cs" />
+    <Compile Include="EnemyShips\EnemySpaceShipStandart.cs" />
+    <Compile Include="EnemyShips\EnemySpaceShipExtraFast.cs" />
+    <Compile Include="Core\Engine.cs" />
     <Compile Include="Interfaces\IBullet.cs" />
     <Compile Include="Interfaces\IEnemySpaceShip.cs" />
-    <Compile Include="Interfaces\ISpaceObject.cs" />
-    <Compile Include="PlayerSpaceShip.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Interfaces\ISpaceShip.cs" />
+    <Compile Include="PlayerShips\PlayerSpaceShip.cs" />
+    <Compile Include="StartTheGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpaceObject.cs" />
+    <Compile Include="SpaceObjects\SpaceShip.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

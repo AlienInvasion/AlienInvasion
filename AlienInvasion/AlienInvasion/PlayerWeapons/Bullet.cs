@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AlienInvasion
 {
-    public class Bullets : IBullet
+    public class Bullet : IBullet
     {
         private Texture2D texture;
         private Vector2 posituon;
@@ -19,7 +19,7 @@ namespace AlienInvasion
         private int y;
         private bool isVisible;
 
-        public Bullets(Texture2D newTexture)
+        public Bullet(Texture2D newTexture)
         {
             texture = newTexture;
             isVisible = true;

@@ -6,7 +6,7 @@ namespace AlienInvasion
     /// <summary>
     /// The main class.
     /// </summary>
-    public static class Program
+    public static class StartTheGame
     {
         /// <summary>
         /// The main entry point for the application.
@@ -14,7 +14,7 @@ namespace AlienInvasion
         [STAThread]
         static void Main()
         {
-            using (var game = new Game1())
+            using (var game = new Engine())
                 game.Run();
         }
     }

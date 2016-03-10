@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace AlienInvasion
 {
-    public class PlayerSpaceShip : SpaceObject
+    public class PlayerSpaceShip : SpaceShip
     {
         public PlayerSpaceShip(Texture2D texture, Texture2D defaultTexture, int rows, int columns, int windowClientBoundsRight, int windowClientBoundsHeight)
             : base(texture, defaultTexture, rows, columns, windowClientBoundsRight, windowClientBoundsHeight)
