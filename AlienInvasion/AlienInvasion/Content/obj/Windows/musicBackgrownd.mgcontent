@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/musicBackgrownd.mp3</SourceFile>
-  <SourceTime>2016-03-10T10:06:21.7728675+02:00</SourceTime>
-  <DestFile>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/bin/Windows/musicBackgrownd.xnb</DestFile>
-  <DestTime>2016-03-10T10:09:27.6606659+02:00</DestTime>
+  <SourceFile>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/musicBackgrownd.mp3</SourceFile>
+  <SourceTime>2016-03-10T15:55:23.5901004+02:00</SourceTime>
+  <DestFile>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/bin/Windows/musicBackgrownd.xnb</DestFile>
+  <DestTime>2016-03-10T16:01:41.3127567+02:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2015-04-29T20:14:44+03:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/bin/Windows/musicBackgrownd.wma</string>
+    <string>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/bin/Windows/musicBackgrownd.wma</string>
   </BuildOutput>
 </PipelineBuildEvent>

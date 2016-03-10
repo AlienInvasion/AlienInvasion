@@ -10,7 +10,7 @@ namespace AlienInvasion
 {
     public class EnemySpaceShipStandart : SpaceShip, IEnemySpaceShip
     {
-        Random randomNumber = new Random();
+        readonly Random randomNumber = new Random();
 
         public EnemySpaceShipStandart(Texture2D texture, Texture2D defaultTexture, int rows, int columns, int windowClientBoundsRight, int windowClientBoundsHeight)
             : base(texture, defaultTexture, rows, columns, windowClientBoundsRight, windowClientBoundsHeight)
@@ -21,7 +21,6 @@ namespace AlienInvasion
         {
             this.Y = -300;
             this.X = 1000;
-            //new
             this.PointToScore = 10;
         }
 
