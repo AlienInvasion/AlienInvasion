@@ -37,6 +37,7 @@ namespace AlienInvasion
         private PlayerSpaceShip playerSpaceShip;
         readonly IList<IEnemySpaceShip> enemySpaceShips = new List<IEnemySpaceShip>();
         readonly List<IBullet> bullets = new List<IBullet>();
+        readonly List<IEnemyBullet> enemyBullets = new List<IEnemyBullet>();
         private KeyboardState pastKey;
         private Random randomNumber = new Random();
 
@@ -135,7 +136,6 @@ namespace AlienInvasion
                 enemySpaceShips[i].Y = randomPosition;
             }
 
-            //music
             this.musicBackgrownd = Content.Load<Song>("musicBackgrownd");
             MediaPlayer.Play(musicBackgrownd);
             MediaPlayer.IsRepeating = true;
@@ -171,8 +171,11 @@ namespace AlienInvasion
             UpdateEnemyShips();
             CheckForCollisionBetweenPlayerAndEnemyShips();
             BulletsShooting();
+            EnemyShootingBullet();
             UpdateBullets();
+            UpdateEnemyBullets();
             CheckForCollisionBetweenBulletsAndEnemyShips();
+            CheckForCollisionBetweenEnemyBulletsAndPlayerShip();
 
             base.Update(gameTime);
         }
@@ -259,6 +262,7 @@ namespace AlienInvasion
             score = 0;
             enemySpaceShips.Clear();
             bullets.Clear();
+            enemyBullets.Clear();
             ResetElapsedTime();
             MediaPlayer.Stop();
             LoadContent();
@@ -316,6 +320,26 @@ namespace AlienInvasion
                 }
             }
         }
+        public void UpdateEnemyBullets()
+        {
+            foreach (IEnemyBullet enemyBullet in enemyBullets)
+            {
+                enemyBullet.Posituon += new Vector2(0, 5);
+                if (Vector2.Distance(enemyBullet.Posituon, new Vector2(1, 1)) > 1070)
+                {
+                    enemyBullet.IsVisible = false;
+                }
+            }
+
+            for (int i = 0; i < enemyBullets.Count; i++)
+            {
+                if (!enemyBullets[i].IsVisible)
+                {
+                    enemyBullets.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
 
         private void UpdateEnemyShips()
         {
@@ -337,6 +361,24 @@ namespace AlienInvasion
                 bullets.Add(newBullet);
             }
         }
+        public void EnemyShoot()
+        {
+            foreach (var enemySpaceShip in enemySpaceShips)
+            {
+                if (enemySpaceShip.IsActive)
+                {
+                    IEnemyBullet newEnemyBullet = new EnemyBullet(Content.Load<Texture2D>("enemyBullet01"));
+                    newEnemyBullet.Posituon = new Vector2(enemySpaceShip.X + 30, enemySpaceShip.Y + 25);
+                    newEnemyBullet.IsVisible = true;
+
+                    if (enemyBullets.Count < 20)
+                    {
+                        shootSoundEffect1.Play();
+                        enemyBullets.Add(newEnemyBullet);
+                    }
+                }
+            }
+        }
 
         private void BulletsShooting()
         {
@@ -349,6 +391,23 @@ namespace AlienInvasion
             }
 
             pastKey = Keyboard.GetState();
+        }
+
+        private void EnemyShootingBullet()
+        {
+            foreach (var enemySpaceShip in enemySpaceShips)
+            {
+                if ((!enemySpaceShip.IsShootingBullet) && (enemySpaceShip.Y > 150) && (enemySpaceShip.IsActive == true))
+                {
+                    if (!enemySpaceShip.IsDestroyed)
+                    {
+                        EnemyShoot();
+                        enemySpaceShip.IsShootingBullet = true;
+                    }
+                }
+
+
+            }
         }
 
         private void CheckForCollisionBetweenPlayerAndEnemyShips()
@@ -388,6 +447,24 @@ namespace AlienInvasion
                     }
                 }
             }
+        }
+        private void CheckForCollisionBetweenEnemyBulletsAndPlayerShip()
+        {
+
+            foreach (var enemyBullet in enemyBullets)
+            {
+                if (CollideEnemyBullets(enemyBullet, playerSpaceShip))
+                {
+                    if (!playerSpaceShip.IsDestroyed)
+                    {
+
+                        playerSpaceShip.Texture = Content.Load<Texture2D>("explosion");
+                        playerSpaceShip.IsDestroyed = true;
+                    }
+                    enemyBullet.Posituon += new Vector2(1000, -500);
+                }
+            }
+
         }
 
         protected bool CollideShips(SpaceShip spaceShip1, IEnemySpaceShip spaceShip2)
@@ -441,6 +518,32 @@ namespace AlienInvasion
             {
                 return false;
             }
+
+            if (result == true)
+            {
+                SFXRandomExplosionPlay();
+            }
+
+            return result;
+        }
+        public bool CollideEnemyBullets(IEnemyBullet bullletLokal, PlayerSpaceShip playerSpaceShip)
+        {
+            bool result = false;
+
+            Rectangle colilisionRectForBullets = new Rectangle(
+            (int)bullletLokal.X,
+            (int)bullletLokal.Y,
+            20,
+            15
+            );
+
+            Rectangle colilisionRectForSpaceObject = new Rectangle(
+            (int)playerSpaceShip.X,
+            (int)playerSpaceShip.Y,
+            50,
+            50
+            );
+            result = colilisionRectForBullets.Intersects(colilisionRectForSpaceObject);
 
             if (result == true)
             {
@@ -540,15 +643,20 @@ namespace AlienInvasion
 
                     Vector2 location = new Vector2(400, 240);
                     playerSpaceShip.Draw(spriteBatch, new Vector2(playerSpaceShip.X, playerSpaceShip.Y));
-                    
+
                     foreach (var enemyShip in enemySpaceShips)
                     {
                         enemyShip.Draw(spriteBatch, new Vector2(enemyShip.X, enemyShip.Y));
                     }
 
-                    foreach (Bullet bullet in bullets)
+                    foreach (IBullet bullet in bullets)
                     {
                         bullet.Draw(spriteBatch);
+                    }
+
+                    foreach (IEnemyBullet enemyBullet in enemyBullets)
+                    {
+                        enemyBullet.Draw(spriteBatch);
                     }
                     break;
             }

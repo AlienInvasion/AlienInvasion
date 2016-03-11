@@ -46,8 +46,13 @@ namespace AlienInvasion
             {
                 if (enemyShip.Y > WindowClientBoundsHeight + 50)
                 {
-                    enemyShip.Y = randomNumber.Next(-200, -85);
+                    enemyShip.Y = randomNumber.Next(-120, -85);
                     enemyShip.X = randomNumber.Next(75, WindowClientBoundsRight - 75);
+                    if (randomNumber.Next(-1, 50) > 0)
+                    {
+                        enemyShip.IsShootingBullet = false;
+                    }
+                    
                 }
             }
         }

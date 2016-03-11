@@ -8,10 +8,18 @@ namespace AlienInvasion
     public class EnemySpaceShipExtraFast : SpaceShip, IEnemySpaceShip
     {
         readonly Random randomNumber = new Random();
+        private bool isShootingBullet;
 
+        
         public EnemySpaceShipExtraFast(Texture2D texture, Texture2D defaultTexture, int rows, int columns, int windowClientBoundsRight, int windowClientBoundsHeight)
             : base(texture, defaultTexture, rows, columns, windowClientBoundsRight, windowClientBoundsHeight)
         {
+        }
+
+        public bool IsShootingBullet
+        {
+            get { return isShootingBullet; }
+            set { isShootingBullet = value; }
         }
 
         public void EnemyShipInitialize()

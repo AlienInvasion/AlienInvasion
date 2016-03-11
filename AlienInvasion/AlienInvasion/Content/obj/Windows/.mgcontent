@@ -4,29 +4,30 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/MainMenu.jpg</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/Button_easy.png</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/Button_medium.png</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/Button_hard.png</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/Button_back.png</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/arrow.png</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/earth.png</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/PlayerSpriteShip_4x4_001.png</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/PlayerSpriteShipBlinkingLamp.png</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/EnemySpriteShipClear.png</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/shuttle.png</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/stars.jpg</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/MainFont.spritefont</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/explosion.png</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/emptySprite.png</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/explosion2.png</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/bullet01_1f_8p.png</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/musicBackgrownd.mp3</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/shoot1.wma</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/shoot2.wav</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/boom1.wav</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/boom2.wav</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/boom3.wav</File>
-    <File>C:/Users/Simeon/Desktop/GitHub/AlienInvasion/AlienInvasion/AlienInvasion/Content/EnemySpriteShipGreenClear.png</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/MainMenu.jpg</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/Button_easy.png</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/Button_medium.png</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/Button_hard.png</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/Button_back.png</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/arrow.png</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/earth.png</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/PlayerSpriteShip_4x4_001.png</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/PlayerSpriteShipBlinkingLamp.png</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/EnemySpriteShipClear.png</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/shuttle.png</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/stars.jpg</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/MainFont.spritefont</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/explosion.png</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/emptySprite.png</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/explosion2.png</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/bullet01_1f_8p.png</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/musicBackgrownd.mp3</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/shoot1.wma</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/shoot2.wav</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/boom1.wav</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/boom2.wav</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/boom3.wav</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/EnemySpriteShipGreenClear.png</File>
+    <File>C:/Users/Admin/Desktop/GitHubRepository/AlienInvasion/AlienInvasion/AlienInvasion/Content/enemyBullet01.png</File>
   </SourceFiles>
 </SourceFileCollection>

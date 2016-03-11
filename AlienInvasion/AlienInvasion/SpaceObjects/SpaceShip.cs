@@ -8,24 +8,13 @@ namespace AlienInvasion
 {
     public abstract class SpaceShip : ISpaceShip
     {
-        //new
         private int pointToScore;
-
-        public int PointToScore
-        {
-            get { return pointToScore; }
-            set { pointToScore = value; }
-        }
-
-
         private int currentFrame;
         private int totalFrames;
         private int x;
         private int y;
         private bool isDestroyed;
         private bool isActive = false;
-
-
         private int windowClientBoundsRight;
         private int windowClientBoundsHeight;
 
@@ -39,6 +28,12 @@ namespace AlienInvasion
             this.totalFrames = this.Rows * this.Columns;
             this.WindowClientBoundsRight = windowClientBoundsRight;
             this.WindowClientBoundsHeight = windowClientBoundsHeight;
+        }
+
+        public int PointToScore
+        {
+            get { return pointToScore; }
+            set { pointToScore = value; }
         }
 
         public Texture2D Texture { get; set; }
@@ -82,8 +77,7 @@ namespace AlienInvasion
         }
 
         public abstract void Update();
-
-
+        
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             int width = Texture.Width / Columns;

@@ -54,6 +54,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Core\GameState.cs" />
+    <Compile Include="EnemyWeapons\EnemyBullet.cs" />
+    <Compile Include="Interfaces\IEnemyBullet.cs" />
     <Compile Include="PlayerWeapons\Bullet.cs" />
     <Compile Include="MenuUtils\Button.cs" />
     <Compile Include="Core\EnemyManager.cs" />
@@ -88,6 +90,7 @@
     <Content Include="Content\Button_medium.png" />
     <Content Include="Content\earth.png" />
     <Content Include="Content\emptySprite.png" />
+    <Content Include="Content\enemyBullet01.png" />
     <Content Include="Content\EnemySpriteShipClear.png" />
     <Content Include="Content\EnemySpriteShipGreenClear.png" />
     <Content Include="Content\explosion.png" />
